@@ -149,7 +149,7 @@ ncols = const n
   where n = fromInteger $ natVal @n Proxy
 
 instance forall m n f. Show f => Show (Matrix m n f) where
-    show (Matrix mat) = M.prettyMatrix mat
+    show = show . toLists
 
 instance forall m n f. Ord f => Ord (Matrix m n f) where
     compare x y = toList x `compare` toList y -- TODO: Do not use `toList`?
